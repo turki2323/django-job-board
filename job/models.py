@@ -1,20 +1,32 @@
+from django import db
 from django.db import models
 
 
 
 JOB_TYPE = (
-( 'Full Time', 'Full Time'), 
-( 'Part Time', 'Part Time'), 
+    ( 'Full Time', 'Full Time'), 
+    ( 'Part Time', 'Part Time'), 
 
 
 )
 
 # Create your models here.
-class Job (models.Model):
+class job (models.Model):
     title = models.CharField (max_length=100)
 
    # location
-Job_type = models.CharField(max_length=15 , choices = JOB_TYPE)
+    job_type = models.CharField(max_length=15 , choices = JOB_TYPE)
+    descrpition = models.TextField(max_length=1000) 
+    published_at = models.DateTimeField(auto_now=True)
+    vacany = models.IntegerField(default=1)
+    salary = models.IntegerField(default=0)
+    experience = models.IntegerField(default=1)
+
+
+    def __str__  (self):
+        return self.title
+
+
 
 
 
